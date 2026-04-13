@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(135deg, #e0f2fe, #f8fafc);
+}
+
+/* NAVBAR */
+.navbar {
+  background: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* CARD */
+.card {
+  background: white;
+  padding: 25px;
+  margin-top: 25px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+/* STATUS COLORS */
+.safe {
+  border-left: 5px solid #22c55e;
+}
+
+.fraud {
+  border-left: 5px solid #ef4444;
+}
+
+.suspicious {
+  border-left: 5px solid #f59e0b;
+}
+
+/* BUTTON */
+button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  margin: 5px;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+/* SCANNER */
+#reader {
+  border-radius: 10px;
+  border: 2px solid #2563eb;
+}
