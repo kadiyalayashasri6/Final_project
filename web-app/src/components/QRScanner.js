@@ -4,7 +4,6 @@ import { Html5Qrcode } from "html5-qrcode";
 function QRScanner({ onScan }) {
   const scannerRef = useRef(null);
   const [scanning, setScanning] = useState(false);
-const [isRunning, setIsRunning] = useState(false);
 
 
   useEffect(() => {
