@@ -5,17 +5,16 @@ function QRScanner({ onScan }) {
   const scannerRef = useRef(null);
   const [scanning, setScanning] = useState(false);
 
-
   useEffect(() => {
     scannerRef.current = new Html5Qrcode("reader");
 
     return () => {
-      // 🔥 SAFE CLEANUP
-      if (scannerRef.current && scanning) {
+      // 🔥 CLEANUP on component unmount
+      if (scannerRef.current) {
         scannerRef.current.stop().catch(() => {});
       }
     };
-  }, [scanning]);
+  }, []);
 
   const startScan = async () => {
     if (!scannerRef.current || scanning) return;
@@ -37,21 +36,22 @@ function QRScanner({ onScan }) {
     }
   };
 
-const stopScan = async () => {
-  try {
-    if (scannerRef.current) {
-      const state = scannerRef.current.getState();
+  const stopScan = async () => {
+    try {
+      if (scannerRef.current) {
+        const state = scannerRef.current.getState();
 
-      if (state === 2) { // 2 = scanning
-        await scannerRef.current.stop();
-        await scannerRef.current.clear();
-        setIsRunning(false);
+        if (state === 2) { // 2 = scanning
+          await scannerRef.current.stop();
+          await scannerRef.current.clear();
+        }
+
+        setScanning(false); // ✅ IMPORTANT
       }
+    } catch (err) {
+      console.log("Safe stop:", err);
     }
-  } catch (err) {
-    console.log("Safe stop:", err);
-  }
-};
+  };
 
   return (
     <div style={{ textAlign: "center" }}>
